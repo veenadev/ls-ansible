@@ -4,7 +4,10 @@
   become: true
   roles:
     - role: datadog_agent
-    - role: apache
     - role: docker
-    - role: nginx
-    - role: redis
+    - role: kafka
+    - role: cassandra
+    - role: consul
+    - role: elasticsearch
+    - role: mysql
+    
