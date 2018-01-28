@@ -2,7 +2,7 @@
   shell: "service docker status"
   register: _svc_docker
   failed_when: >
-    _svc_docker.rc != 0 and ("unrecognized service" not in _svc_apache.stderr)
+    _svc_docker.rc != 0 and ("unrecognized service" not in _svc_docker.stderr)
 
 - name: Install docker Data-dog Plugin
   include_tasks: docker.yml
