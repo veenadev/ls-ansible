@@ -1,6 +1,6 @@
 #data_dog Main yml file
 ---
-- hosts: servers
+- hosts: all
   become: true
   roles:
     - role: datadog_agent
