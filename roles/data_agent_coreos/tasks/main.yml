@@ -2,7 +2,7 @@
   shell: "service data_agent_coreos status"
   register: _svc_data_agent_coreos
   failed_when: >
-    _svc_ data_agent_coreos.rc != 0 and ("unrecognized service" not in _svc_apache.stderr)
+    _svc_ data_agent_coreos.rc != 0 and ("unrecognized service" not in _data_agent_coreos.stderr)
 
 - name: Install data_agent_coreos Data-dog Plugin
   include_tasks: data_agent_coreos.yml
