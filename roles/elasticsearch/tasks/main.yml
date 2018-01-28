@@ -2,7 +2,7 @@
   shell: "service elastcsearch status"
   register: _svc_elastcsearch
   failed_when: >
-    _svc_elastcsearch.rc != 0 and ("unrecognized service" not in _svc_elasticsearch.stderr)
+    _svc_elasticsearch.rc != 0 and ("unrecognized service" not in _svc_elasticsearch.stderr)
 
 - name: Install elastcsearch Data-dog Plugin
   include_tasks: elastcsearch.yml
