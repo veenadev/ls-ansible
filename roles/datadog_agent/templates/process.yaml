@@ -1,0 +1,23 @@
+init_config:
+
+instances:
+- name: ssh
+  search_string: ['ssh', 'sshd']
+- name: apache
+  search_string: ['apache', 'httpd']
+- name: nginx
+  search_string: ['nginx']
+- name: Java
+  search_string: ['java']
+- name: Docker
+  search_string: ['docker']
+- name: Kubernetes
+  search_string: ['kubelet']
+- name: redis
+  search_string: ['redis']
+- name: nginx
+  search_string: ['nginx']
+- name: tomcat8
+  search_string: ['tomcat8']
+- name: mysql
+  search_string: ['mysql']

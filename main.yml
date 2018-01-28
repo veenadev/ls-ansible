@@ -1,0 +1,10 @@
+#data_dog Main yml file
+---
+- hosts: servers
+  become: true
+  roles:
+    - role: datadog_agent
+    - role: apache
+    - role: docker
+    - role: nginx
+    - role: redis
