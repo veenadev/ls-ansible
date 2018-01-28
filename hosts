@@ -1,3 +1,3 @@
 [servers]
-34.229.17.150 ansible_ssh_private_key_file=/Users/arunsanna/keys/veena-reanlab.pem ansible_ssh_user=ec2-user
+34.228.199.85 ansible_ssh_private_key_file=/Users/arunsanna/keys/veena-reanlab.pem ansible_ssh_user=ec2-user
 

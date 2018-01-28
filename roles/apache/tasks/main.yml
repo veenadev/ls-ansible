@@ -1,0 +1,9 @@
+- name: check for apache
+  shell: "service httpd status"
+  register: _svc_apache
+  failed_when: >
+    _svc_apache.rc != 0 and ("unrecognized service" not in _svc_apache.stderr)
+
+- name: Install Cassandra Data-dog Plugin
+  import_tasks: apache.yml
+  when: "_svc_apache.rc == 0"
