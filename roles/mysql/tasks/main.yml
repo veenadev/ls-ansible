@@ -1,5 +1,5 @@
 - name: check for mysql
-  shell: "service mysql status"
+  shell: "service mysqld status"
   register: _svc_mysql
   failed_when: >
     _svc_mysql.rc != 0 and ("unrecognized service" not in _svc_mysql.stderr)
