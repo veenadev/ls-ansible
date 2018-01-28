@@ -1,4 +1,4 @@
-api_key: 31671308f852b47e8c80cab4dde17db0
+api_key: xxxxxxxx
 apache_status_url: http://localhost/server-status?auto
 cassandra_url: localhost
 cassandra_port: 7199
@@ -8,5 +8,5 @@ kafka_host: localhost
 kafka_port: 9999
 mysql_host: localhost
 mysql_datadog_user: datadog
-mysql_datadog_user_password: nerhfbseufneunv
+mysql_datadog_user_password: xxxxxxx
 mysql_port: 3306
