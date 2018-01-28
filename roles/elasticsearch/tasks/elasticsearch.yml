@@ -1,7 +1,5 @@
-init_config:
+- template: src=elasticsearch.yaml dest=/etc/dd-agent/conf.d/elasticsearch.yaml
+  notify: restart datadog-agent
 
-instances:
-  - url: http://localhost:9200 # or wherever your cluster API is listening
-    cluster_stats: false # set true ONLY if you're not running the check on each cluster node
-    pshard_stats: true
-    pending_task_stats: true
+- name: restart datadog-agent
+  action: service name=datadog-agent state=restarted

@@ -1,8 +1,8 @@
-- name: check for apache
+- name: check for cassandra
   shell: "service cassandra status"
   register: _svc_cassandra
   failed_when: >
-    _svc_apache.rc != 0 and ("unrecognized service" not in _svc_apache.stderr)
+    _svc_cassandra.rc != 0 and ("unrecognized service" not in _svc_apache.stderr)
 
 - name: Install Cassandra Data-dog Plugin
   include: cassandra.yml

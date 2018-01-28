@@ -1,8 +1,8 @@
-- name: check for apache
+- name: check for elastcsearch
   shell: "service elastcsearch status"
   register: _svc_elastcsearch
   failed_when: >
-    _svc_apache.rc != 0 and ("unrecognized service" not in _svc_apache.stderr)
+    _svc_elastcsearch.rc != 0 and ("unrecognized service" not in _svc_apache.stderr)
 
 - name: Install elastcsearch Data-dog Plugin
   include: elastcsearch.yml

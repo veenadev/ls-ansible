@@ -1,9 +1,5 @@
-init_config:
-  instances:
-    - apache_status_url: http://localhost/server-status?auto
-      #apache_user: example_user # if apache_status_url needs HTTP basic auth
-      #apache_password: example_password
-      #disable_ssl_validation: true # if you need to disable SSL cert validation, i.e. for self-signed certs
+- template: src=apache.yaml dest=/etc/dd-agent/conf.d/apache.yaml
+  notify: restart datadog-agent
 
 - name: restart datadog-agent
   action: service name=datadog-agent state=restarted

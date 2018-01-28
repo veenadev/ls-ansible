@@ -1,9 +1,9 @@
-- name: check for apache
-  shell: "service cosul status"
-  register: _svc_cosul
+- name: check for consul
+  shell: "service consul status"
+  register: _svc_consul
   failed_when: >
-    _svc_apache.rc != 0 and ("unrecognized service" not in _svc_apache.stderr)
+    _svc_consul.rc != 0 and ("unrecognized service" not in _svc_apache.stderr)
 
-- name: Install cosul Data-dog Plugin
-  include: cosul.yml
-  when: "_svc_cosul.rc == 0"
+- name: Install consul Data-dog Plugin
+  include: consul.yml
+  when: "_svc_consul.rc == 0"

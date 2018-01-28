@@ -1,4 +1,4 @@
-- template: src=mysql.yaml dest=/etc/dd-agent/conf.d/mysql.yaml
+- template: src=consul.yaml dest=/etc/dd-agent/conf.d/consul.yaml
   notify: restart datadog-agent
 
 - name: restart datadog-agent

@@ -1,1 +1,12 @@
 api_key: 31671308f852b47e8c80cab4dde17db0
+apache_status_url: http://localhost/server-status?auto
+cassandra_url: localhost
+cassandra_port: 7199
+cosul_url: http://localhost:8500
+elasticsearch_url: http://localhost:9200
+kafka_host: localhost
+kafka_port: 9999
+mysql_host: localhost
+mysql_datadog_user: datadog
+mysql_datadog_user_password: nerhfbseufneunv
+mysql_port: 3306

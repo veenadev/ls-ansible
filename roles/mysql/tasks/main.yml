@@ -1,8 +1,8 @@
-- name: check for apache
+- name: check for mysql
   shell: "service mysql status"
   register: _svc_mysql
   failed_when: >
-    _svc_apache.rc != 0 and ("unrecognized service" not in _svc_apache.stderr)
+    _svc_mysql.rc != 0 and ("unrecognized service" not in _svc_apache.stderr)
 
 - name: Install mysql Data-dog Plugin
   include: mysql.yml

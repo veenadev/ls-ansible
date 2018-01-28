@@ -1,8 +1,8 @@
-- name: check for apache
+- name: check for kafka
   shell: "service kafka status"
   register: _svc_kafka
   failed_when: >
-    _svc_apache.rc != 0 and ("unrecognized service" not in _svc_apache.stderr)
+    _svc_kafka.rc != 0 and ("unrecognized service" not in _svc_apache.stderr)
 
 - name: Install kafka Data-dog Plugin
   include: kafka.yml

@@ -1,4 +1,5 @@
----
-- name: Run the following command to set the api key
-  command: docker run -d --privileged --name dd-agent -h hostname` -v /var/run/docker.sock:/var/run/docker.sock -v /proc/mounts:/host/proc/mounts:ro -v /sys/fs/cgroup/:/host/sys/fs/cgroup:ro -e API_KEY={{ api_key }} datadog/docker-dd-agent
- 
+- template: src=data_agent_coreos.yaml dest=/etc/dd-agent/conf.d/data_agent_coreos.yaml
+  notify: restart datadog-agent
+
+- name: restart datadog-agent
+  action: service name=datadog-agent state=restarted

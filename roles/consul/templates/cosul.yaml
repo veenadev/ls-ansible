@@ -3,7 +3,7 @@ init_config:
 instances:
     # where the Consul HTTP Server Lives
     # use 'https' if Consul is configured for SSL
-    - url: http://localhost:8500
+    - url: {{ consul_url }}
       # again, if Consul is talking SSL
       # client_cert_file: '/path/to/client.concatenated.pem'
 
