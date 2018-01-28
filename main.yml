@@ -1,13 +1,13 @@
 #data_dog Main yml file
 ---
-- hosts: all
+- hosts: servers
   become: true
   roles:
     - role: datadog_agent
-    - role: docker
-    - role: kafka
-    - role: cassandra
-    - role: consul
-    - role: elasticsearch
-    - role: mysql
+    #- role: docker
+    #- role: kafka
+    #- role: cassandra
+    #- role: consul
+    #- role: elasticsearch
+    #- role: mysql
     
