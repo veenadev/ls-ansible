@@ -2,7 +2,7 @@
   shell: "service cassandra status"
   register: _svc_cassandra
   failed_when: >
-    _svc_cassandra.rc != 0 and ("unrecognized service" not in _svc_apache.stderr)
+    _svc_cassandra.rc != 0 and ("unrecognized service" not in _svc_cassandra.stderr)
 
 - name: Install Cassandra Data-dog Plugin
   include_tasks: cassandra.yml
