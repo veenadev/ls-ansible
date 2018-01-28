@@ -1,16 +1,9 @@
-init_config:
+- name: check for apache
+  shell: "service cosul status"
+  register: _svc_cosul
+  failed_when: >
+    _svc_apache.rc != 0 and ("unrecognized service" not in _svc_apache.stderr)
 
-instances:
-    # where the Consul HTTP Server Lives
-    # use 'https' if Consul is configured for SSL
-    - url: http://localhost:8500
-      # again, if Consul is talking SSL
-      # client_cert_file: '/path/to/client.concatenated.pem'
-
-      # submit per-service node status and per-node service status?
-      catalog_checks: yes
-
-      # emit leader election events
-      self_leader_check: yes
-
-      network_latency_checks: yes
+- name: Install cosul Data-dog Plugin
+  include: cosul.yml
+  when: "_svc_cosul.rc == 0"

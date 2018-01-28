@@ -1,15 +1,9 @@
-  init_config:
+- name: check for apache
+  shell: "service mysql status"
+  register: _svc_mysql
+  failed_when: >
+    _svc_apache.rc != 0 and ("unrecognized service" not in _svc_apache.stderr)
 
-  instances:
-    - server: localhost
-      user: datadog
-      pass: <YOUR_CHOSEN_PASSWORD> # from the CREATE USER step earlier
-      port: <YOUR_MYSQL_PORT> # e.g. 3306
-      options:
-          replication: 0
-          galera_cluster: 1
-          extra_status_metrics: true
-          extra_innodb_metrics: true
-          extra_performance_metrics: true
-          schema_size_metrics: false
-          disable_innodb_metrics: false
+- name: Install mysql Data-dog Plugin
+  include: mysql.yml
+  when: "_svc_mysql.rc == 0"

@@ -1,7 +1,9 @@
-init_config:
+- name: check for apache
+  shell: "service elastcsearch status"
+  register: _svc_elastcsearch
+  failed_when: >
+    _svc_apache.rc != 0 and ("unrecognized service" not in _svc_apache.stderr)
 
-instances:
-  - url: http://localhost:9200 # or wherever your cluster API is listening
-    cluster_stats: false # set true ONLY if you're not running the check on each cluster node
-    pshard_stats: true
-    pending_task_stats: true
+- name: Install elastcsearch Data-dog Plugin
+  include: elastcsearch.yml
+  when: "_svc_elastcsearch.rc == 0"

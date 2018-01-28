@@ -1,43 +1,9 @@
-#Docker
----
-#- name: Run Command for Amazon
-#  command: docker run -d --name dd-agent -v /var/run/docker.sock:/var/run/docker.sock:ro -v /proc/:/host/proc/:ro -v /cgroup/:/host/sys/fs/cgroup:ro -e API_KEY={{ api_key }} -e SD_BACKEND=docker datadog/docker-dd-agent:latest
-#  when: ansible_distribution == "Amazon"
+- name: check for apache
+  shell: "service docker status"
+  register: _svc_docker
+  failed_when: >
+    _svc_apache.rc != 0 and ("unrecognized service" not in _svc_apache.stderr)
 
-- name: Run Command for RedHat
-  command: docker run -d --name dd-agent -v /var/run/docker.sock:/var/run/docker.sock:ro -v /proc/:/host/proc/:ro -v /cgroup/:/host/sys/fs/cgroup:ro -e API_KEY={{ api_key }} -e SD_BACKEND=docker datadog/docker-dd-agent:latest
-  when: ansible_distribution == "RedHat"
-
-- name: Run Command for Debian
-  command: docker run -d --name dd-agent -v /var/run/docker.sock:/var/run/docker.sock:ro -v /proc/:/host/proc/:ro -v /cgroup/:/host/sys/fs/cgroup:ro -e API_KEY={{ api_key }} -e SD_BACKEND=docker datadog/docker-dd-agent:latest
-  when: ansible_distribution == "Debian"
-
-- name: Run the docker image automatically on boot
-  command: docker run --restart=always -d datadog/docker-dd-agent:latest
-
-- name: Add the agent user to the docker group
-  command: usermod -a -G docker dd-agent
-
--  stat:
-      path: /etc/dd-agent/conf.d/docker_daemon.yaml
-   register: stat_result_docker
-
-- name: Create the file, if it doesnt exist already
-  file:
-    path: /etc/dd-agent/conf.d/docker_daemon.yaml
-    state: touch
-  when: stat_result_docker.stat.exists == False
-  
-- name : 
-  blockinfile:
-     dest: /etc/dd-agent/conf.d/docker_daemon.yaml
-     block: |
-         init_config:
-         instances:
-            - url: "unix://var/run/docker.sock"
-              new_tag_names: true
-              
-- name: Restart the agent
-  action: service name=datadog-agent state=restarted
-
-
+- name: Install docker Data-dog Plugin
+  include: docker.yml
+  when: "_svc_docker.rc == 0"

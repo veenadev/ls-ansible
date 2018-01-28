@@ -1,0 +1,16 @@
+init_config:
+
+instances:
+    # where the Consul HTTP Server Lives
+    # use 'https' if Consul is configured for SSL
+    - url: http://localhost:8500
+      # again, if Consul is talking SSL
+      # client_cert_file: '/path/to/client.concatenated.pem'
+
+      # submit per-service node status and per-node service status?
+      catalog_checks: yes
+
+      # emit leader election events
+      self_leader_check: yes
+
+      network_latency_checks: yes

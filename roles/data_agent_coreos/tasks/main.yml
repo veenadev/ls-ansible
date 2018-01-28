@@ -1,4 +1,9 @@
----
-- name: Run the following command to set the api key
-  command: docker run -d --privileged --name dd-agent -h hostname` -v /var/run/docker.sock:/var/run/docker.sock -v /proc/mounts:/host/proc/mounts:ro -v /sys/fs/cgroup/:/host/sys/fs/cgroup:ro -e API_KEY={{ api_key }} datadog/docker-dd-agent
- 
+- name: check for apache
+  shell: "service data_agent_coreos status"
+  register: _svc_data_agent_coreos
+  failed_when: >
+    _svc_apache.rc != 0 and ("unrecognized service" not in _svc_apache.stderr)
+
+- name: Install data_agent_coreos Data-dog Plugin
+  include: data_agent_coreos.yml
+  when: "_svc_data_agent_coreos.rc == 0"
