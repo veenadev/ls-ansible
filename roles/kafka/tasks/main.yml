@@ -2,7 +2,7 @@
   shell: "service kafka status"
   register: _svc_kafka
   failed_when: >
-    _svc_kafka.rc != 0 and ("unrecognized service" not in _svc_apache.stderr)
+    _svc_kafka.rc != 0 and ("unrecognized service" not in _svc_kafka.stderr)
 
 - name: Install kafka Data-dog Plugin
   include_tasks: kafka.yml
