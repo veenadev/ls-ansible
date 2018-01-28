@@ -7,17 +7,17 @@ instances:
   search_string: ['apache', 'httpd']
 - name: nginx
   search_string: ['nginx']
-- name: Java
-  search_string: ['java']
+- name: Kafka
+  search_string: ['kafka']
 - name: Docker
   search_string: ['docker']
-- name: Kubernetes
-  search_string: ['kubelet']
-- name: redis
-  search_string: ['redis']
+- name: cassandra
+  search_string: ['cassandra']
+- name: consul
+  search_string: ['consul']
 - name: nginx
   search_string: ['nginx']
-- name: tomcat8
-  search_string: ['tomcat8']
+- name: elasticsearch
+  search_string: ['elasticsearch']
 - name: mysql
   search_string: ['mysql']
