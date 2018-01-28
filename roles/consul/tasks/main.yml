@@ -5,5 +5,5 @@
     _svc_consul.rc != 0 and ("unrecognized service" not in _svc_apache.stderr)
 
 - name: Install consul Data-dog Plugin
-  include: consul.yml
+  include_tasks: consul.yml
   when: "_svc_consul.rc == 0"

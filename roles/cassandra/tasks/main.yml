@@ -5,5 +5,5 @@
     _svc_cassandra.rc != 0 and ("unrecognized service" not in _svc_apache.stderr)
 
 - name: Install Cassandra Data-dog Plugin
-  include: cassandra.yml
+  include_tasks: cassandra.yml
   when: "_svc_cassandra.rc == 0"

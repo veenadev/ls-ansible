@@ -5,10 +5,10 @@
   roles:
     - role: datadog_agent
     - role: apache
-    #- role: docker
-    #- role: kafka
-    #- role: cassandra
-    #- role: consul
-    #- role: elasticsearch
-    #- role: mysql
+    - role: docker
+    - role: kafka
+    - role: cassandra
+    - role: consul
+    - role: elasticsearch
+    - role: mysql
     

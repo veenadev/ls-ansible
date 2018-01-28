@@ -5,5 +5,5 @@
     _svc_elastcsearch.rc != 0 and ("unrecognized service" not in _svc_apache.stderr)
 
 - name: Install elastcsearch Data-dog Plugin
-  include: elastcsearch.yml
+  include_tasks: elastcsearch.yml
   when: "_svc_elastcsearch.rc == 0"

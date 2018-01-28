@@ -5,5 +5,5 @@
     _svc_ data_agent_coreos.rc != 0 and ("unrecognized service" not in _svc_apache.stderr)
 
 - name: Install data_agent_coreos Data-dog Plugin
-  include: data_agent_coreos.yml
+  include_tasks: data_agent_coreos.yml
   when: "_svc_data_agent_coreos.rc == 0"
